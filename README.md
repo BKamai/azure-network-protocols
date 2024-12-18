@@ -147,5 +147,104 @@ In this tutorial, we observe various network traffic to and from Azure Virtual M
 
 <h2>ICMP + Firewalls</h2>
 
-- To get a basic idea of how firewalls work we will block IMCP traffic from VM-2 firewall and observe the results.
-- Go back to the Azure portal go to Network Security groups and click on VM-2.
+1. To get a basic idea of how firewalls work we will block IMCP traffic from VM-2 firewall and observe the results.
+2. Go back to the Azure portal go to Network Security groups and click on VM-2.
+3. From there click on Inbound security rules and click Add.
+   
+<p>
+<img src="https://i.imgur.com/MzaoMFw.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+
+4. Add inbound security rule.
+5. Protocol: ICMP
+6. Action: Deny
+7. Priority: 290(We want this on the top of the list of Inbound Security Rules)
+
+<p>
+<img src="https://i.imgur.com/wtxYvPh.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+
+8. Back in the Windows 10 VM, observe the ICMP traffic in WireShark and the command line Ping activity
+9. Re-enable ICMP traffic for the Network Security Group your Ubuntu VM is using
+10. Back in the Windows 10 VM, observe the ICMP traffic in WireShark and the command line Ping activity (should start working)
+
+<p>
+<img src="https://i.imgur.com/Z77BXXF.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+
+<h2>Observe SSH Traffic</h2>
+
+
+1. SSH(Secure Shell) provides a secure way to access and manage remote systems, making it a widely used protocol for remote administration, file transfer, and other network services.
+2. Observe SSH traffic in WireShark.
+3. From your Windows VM, SSH into your Ubuntu Virtual Machine (via its private IP address)
+4. enter ssh labuser@10.0.0.5
+
+
+
+<p>
+<img src="https://i.imgur.com/BxtaRA5.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+
+<p>
+<img src="https://i.imgur.com/HwU831l.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+
+5. Type in the password when prompted(Note that when you enter your password it won't show anything.)
+
+<p>
+<img src="https://i.imgur.com/w3usih9.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+
+6. Back in Wireshark, filter for SSH traffic only.
+7. To get a basic idea of how SSH works type some basic Linx commands in PowerShell.
+8. id provides information about the user's identity within the system.
+9. uname -a command is used to display system information.
+10. ls command to look up list files and directories in the current directory.
+
+
+<p>
+<img src="https://i.imgur.com/c3fBFBY.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+
+<p>
+<img src="https://i.imgur.com/qJvBFdp.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+
+11. You can use touch followed by the filename to create an empty file.
+12. For example: touch hi.text
+
+<p>
+<img src="https://i.imgur.com/B0ThdOR.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+
+13. Exit the SSH connection by typing ‘exit’ and pressing [Enter]
+
+
+<p>
+<img src="https://i.imgur.com/z2zysq0.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+
+<h2>Observe DHCP Traffic</h2>
+
+1. The next network protocol we will observe is DHCP(Dynamic Host Configuration Protocol)
+2. DHCP protocol dynamically assigns IP addresses and other network configuration parameters to devices on the network, such as IP addresses, Subnet Mask, Default Gateway, and DNS.
+3. From your Windows 10 VM, attempt to issue your VM a new IP address from the command line (ipconfig /renew)
+4. Observe the DHCP traffic appearing in WireShark
+
+<p>
+<img src="https://i.imgur.com/eeGeVN4.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+
+<h2>Observe DNS Traffic</h2>
+
+
+1. The last protocol we will observe in WireShark is the DNS(Domain Name System) protocol.
+2. DNS is like a directory for the internet. It translates easy-to-remember website names (like google.com) into the numerical addresses (IP addresses) that computers use to communicate with each other. In simpler terms, it helps your device find the right websites when you type their names into your browser.
+3. Back in Wireshark, filter for DNS traffic only.
+4. From your Windows 10 VM within a command line, use nslookup to see what google.com IP address is.
+5. Observe the DNS traffic being shown in WireShark.
+
+<p>
+<img src="https://i.imgur.com/PYYJunf.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
