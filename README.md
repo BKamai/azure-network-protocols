@@ -61,7 +61,9 @@ In this tutorial, we observe various network traffic to and from Azure Virtual M
 6. Ensure this VM creates a new virtual network is made, we'll be connecting our Linux VM shortly.
 
 <p>
-<img src="https://i.imgur.com/1SB62Lq.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/zdWOsr4.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
+
+9. Click Review + Create!
 
 <h2>Create a Linux Virtual Machine</h2>
